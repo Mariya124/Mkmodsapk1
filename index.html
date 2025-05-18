@@ -26,17 +26,17 @@
   <section class="py-10 bg-white shadow-inner">
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-2xl font-semibold mb-4">Find Your Favorite APKs</h2>
-      <input type="text" placeholder="Search apps..." class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input id="searchInput" type="text" placeholder="Search apps..." class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
     </div>
   </section>
 
   <!-- Apps Section -->
   <section id="apps" class="max-w-6xl mx-auto px-4 py-10">
     <h3 class="text-2xl font-bold mb-6 text-center">Popular Downloads</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id="appGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- App 1 -->
-      <div class="bg-white p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
+      <!-- App Card -->
+      <div class="app-card bg-white p-5 rounded-xl shadow hover:shadow-lg transition duration-300" data-name="WhatsApp">
         <img src="https://play-lh.googleusercontent.com/WA6IlhP5A6Yi8bcj7-U-yvbIbepY-EoZCBhrhpxsUDxupI_YmUnTQo05N3mS2EuhGA=w240-h480" alt="WhatsApp" class="w-20 h-20 mx-auto mb-4 rounded-full">
         <h4 class="text-center font-semibold text-lg">WhatsApp</h4>
         <p class="text-sm text-center mb-3">Version: 2.24.10.76</p>
@@ -45,8 +45,7 @@
         </div>
       </div>
 
-      <!-- App 2 -->
-      <div class="bg-white p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
+      <div class="app-card bg-white p-5 rounded-xl shadow hover:shadow-lg transition duration-300" data-name="Instagram">
         <img src="https://play-lh.googleusercontent.com/HI4YmuIT1wB07D4OaI7GZEMpBLomVuQUWhKSEtq4WuKMXrYo8z7FjK3pUQb1zxFz_A=w240-h480" alt="Instagram" class="w-20 h-20 mx-auto mb-4 rounded-full">
         <h4 class="text-center font-semibold text-lg">Instagram</h4>
         <p class="text-sm text-center mb-3">Version: 328.0.0.13.111</p>
@@ -55,8 +54,7 @@
         </div>
       </div>
 
-      <!-- App 3 -->
-      <div class="bg-white p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
+      <div class="app-card bg-white p-5 rounded-xl shadow hover:shadow-lg transition duration-300" data-name="TikTok">
         <img src="https://play-lh.googleusercontent.com/mLyoDozR8-1kqFSIuZNsIk3yZLCMDXnkBzNJDsqAWjPQv_-AVTTe7K0fw7U5g7XtRw=w240-h480" alt="TikTok" class="w-20 h-20 mx-auto mb-4 rounded-full">
         <h4 class="text-center font-semibold text-lg">TikTok</h4>
         <p class="text-sm text-center mb-3">Version: 34.5.3</p>
@@ -82,8 +80,8 @@
   <section id="contact" class="py-10 bg-gray-200">
     <div class="max-w-4xl mx-auto text-center">
       <h3 class="text-xl font-bold mb-4">Contact Us</h3>
-      <p class="text-gray-700">Email: support@mkapkstore.com</p>
-      <p class="text-gray-700">Phone: +123-456-7890</p>
+      <p class="text-gray-700">Email: niazalyrahman@gmail.com</p>
+      <p class="text-gray-700">Phone: 01709825152</p>
     </div>
   </section>
 
@@ -91,6 +89,20 @@
   <footer class="bg-gray-900 text-white text-center p-4">
     &copy; 2025 MK APK STORE. All rights reserved.
   </footer>
+
+  <!-- JavaScript for Search -->
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const appCards = document.querySelectorAll('.app-card');
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      appCards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        card.style.display = name.includes(searchTerm) ? 'block' : 'none';
+      });
+    });
+  </script>
 
 </body>
 </html>
